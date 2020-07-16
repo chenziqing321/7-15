@@ -11,11 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/items")
 public class ItemsController {
 
     @Autowired
@@ -31,7 +29,6 @@ public class ItemsController {
      *   url?key1=value1&key2=value2       请求参数就是key1、key2
      *   form表单中的input标签的name="key"  请求参数就是key
      */
-    @RequestMapping("/findAll.action")
     public String findAll(String query , Integer pageNow , Model model){
         //查询PageVO
         PageVO vo = service.findAll(query, pageNow);
@@ -42,7 +39,6 @@ public class ItemsController {
     }
 
     //添加商品  MultipartFile 实现上传图片
-    @RequestMapping("/add.action")
     public String add(Items items, MultipartFile file) throws IOException {
         //上传图片
         if(file!=null){
